@@ -5,11 +5,19 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.clevertap.android.sdk.CleverTapAPI;
+<<<<<<< HEAD
+=======
+import com.clevertap.android.sdk.inbox.CTInboxMessage;
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -30,10 +38,22 @@ import com.clevertap.android.sdk.CTInboxStyleConfig;
 import com.clevertap.android.sdk.CleverTapAPI;
 import com.clevertap.android.sdk.CleverTapInstanceConfig;
 import com.clevertap.android.sdk.inbox.CTInboxActivity;
+<<<<<<< HEAD
+=======
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
 public class MainActivity extends AppCompatActivity implements CTInboxListener{
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+<<<<<<< HEAD
+=======
+    private static final String TAG = "MyActivity";
+
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -56,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener{
             cleverTapDefaultInstance.initializeInbox();
         }
         CleverTapAPI clevertapDefaultInstance = CleverTapAPI.getDefaultInstance(getApplicationContext());
+<<<<<<< HEAD
+=======
+        clevertapDefaultInstance.enablePersonalization();
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
 // each of the below mentioned fields are optional
         HashMap<String, Object> profileUpdate = new HashMap<String, Object>();
         profileUpdate.put("Name", "Test ");    // String
@@ -78,6 +102,20 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener{
         CleverTapAPI.createNotificationChannel(getApplicationContext(),"1","test","YourChannelDescription", NotificationManager.IMPORTANCE_MAX,true);
 
         clevertapDefaultInstance.pushEvent("Call Inapp");
+<<<<<<< HEAD
+=======
+
+        // To access a scalar-value user profile property:
+        // If the property is not available, this call will return null
+
+
+
+        // To access a multi-value user profile property:
+        // If the property is not available, this call will return null
+        // To support multi-value user profile properties, cleverTap.profile.getProperty(key) returns an Object.
+
+
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -91,10 +129,21 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener{
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Snackbar.make(view, "Opening App Inbox", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                clevertapDefaultInstance.pushEvent("Open App-Inbox");
                inboxDidInitialize();
+=======
+                String name = (String) clevertapDefaultInstance.getProperty("Name");
+                JSONObject myStuff = (JSONObject) clevertapDefaultInstance.getProperty("MyStuff");
+                Snackbar.make(view, "Opening App Inbox", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+               //clevertapDefaultInstance.pushEvent("Open App-Inbox");
+               inboxDidInitialize();
+             ArrayList<CTInboxMessage> ct1 =   clevertapDefaultInstance.getAllInboxMessages();
+                Log.d(TAG, "onClick: ");
+>>>>>>> cf983c8 (Adding App persontion, app inbox)
                //cleverTapDefaultInstance.showAppInbox(); //Opens activity tith Tabs
 
             }
